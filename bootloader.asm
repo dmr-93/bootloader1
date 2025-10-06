@@ -20,6 +20,6 @@ start:
     ; Salta para o segundo estágio
     jmp 0x0000:0x7e00 ; jmp 0x07e00
 
-; Preencher o restante
+; Preencher o restante com 0
 times 510-($-$$) db 0
 dw 0xaa55
