@@ -4,6 +4,9 @@ Resultado produzido: ".." (cada ponto sinaliza uma fase carregada e executada)
 
 ---
 Build:
+
 make clean
+
 make
+
 make test
