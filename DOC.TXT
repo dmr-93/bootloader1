@@ -1,0 +1,41 @@
+INT 13h – Leitura de setores do disco
+=====================================
+O INT 13h é uma interrupção do BIOS usada para acessar discos no modo real. Ela trabalha em CHS (Cilindro, Cabeça, Setor).
+
+Parâmetros básicos para leitura (função 02h – ler setores):
+
+AH = 02h → função de leitura de setores
+
+AL = número de setores a ler (1–127)
+
+CH = cilindro baixo (0–1023)
+
+CL = setor + bits altos do cilindro (1–63)
+
+DH = cabeça (0–255)
+
+DL = unidade (0 = disquete A:, 80h = HD)
+
+ES:BX = endereço para armazenar os dados
+
+Conceitos
+=========
+Cilindro (C): conjunto de pistas no mesmo raio em todas as cabeças.
+
+Cabeça (H): cada face do disco, como se fosse uma agulha de leitura.
+
+Setor (S): menor unidade endereçável (normalmente 512 bytes).
+
+Setor 1 é o primeiro setor de cada trilha.
+
+Fluxo de leitura:
+
+CPU configura registros (AH, AL, CH, CL, DH, DL, ES:BX).
+
+Executa INT 13h.
+
+BIOS posiciona a cabeça e lê o setor solicitado.
+
+Dados são copiados para ES:BX.
+
+CF (Carry Flag) indica erro (CF=1 → falha).
